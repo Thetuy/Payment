@@ -38,7 +38,7 @@ namespace Payment.UI.Controllers
         {
             //Request information
             string version = "8.5";
-            string currency = "764";
+            string currency = "702";
             string paymentAction = "https://demo2.2c2p.com/2C2PFrontEnd/RedirectV3/payment";
             string resultUrl = Url.Action("PaymentResult", "Payment", null, this.HttpContext.Request.Scheme);
 

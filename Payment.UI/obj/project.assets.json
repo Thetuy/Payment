@@ -8164,11 +8164,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pathompong\\Downloads\\Payment\\Payment.UI\\Payment.UI.csproj",
+      "projectUniqueName": "D:\\WorkSpaces\\Backend\\Payment\\Payment.UI\\Payment.UI.csproj",
       "projectName": "Payment.UI",
-      "projectPath": "C:\\Users\\pathompong\\Downloads\\Payment\\Payment.UI\\Payment.UI.csproj",
+      "projectPath": "D:\\WorkSpaces\\Backend\\Payment\\Payment.UI\\Payment.UI.csproj",
       "packagesPath": "C:\\Users\\pathompong\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pathompong\\Downloads\\Payment\\Payment.UI\\obj\\",
+      "outputPath": "D:\\WorkSpaces\\Backend\\Payment\\Payment.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pathompong\\AppData\\Roaming\\NuGet\\NuGet.Config",
