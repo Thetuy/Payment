@@ -1,0 +1,50 @@
+﻿@model Generate
+@{
+    ViewData["Title"] = "Generage";
+}
+
+
+    <h1>2C2P Redirect payment (@Model.Channel)</h1>
+
+<form method="post" asp-action="Process">
+    <table>
+        <tr>
+            <td>PRODUCT INFO </td>
+            <td>
+                <input asp-for="Product" />
+                <input type="hidden"  asp-for="Channel"/>
+            </td>
+        </tr>
+        <tr>
+            <td>ORDER NO </td>
+            <td><input asp-for="InvoiceNo" /></td>
+        </tr>
+        <tr>
+            <td>AMOUNT</td>
+            <td> <input asp-for="Amount" /></td>
+        </tr>
+        <tr>
+            <td>PAYMENT OPTION:</td>
+            <td>
+                <select asp-for="PaymentOption">
+                    <option value="A">All available options</option>
+                    <option value="B">Credit card and installment payment only</option>
+                    <option value="C">Credit card payment only</option>
+                    <option value="F">Full amount (No IPP Payment) payment only</option>
+                    <option value="I">IPP (Installment Payment Plan) payment only</option>
+                    <option value="K">KCP Payment only</option>
+                    <option value="L">Alipay payment only</option>
+                    <option value="M">MPU payment only</option>
+                    <option value="P">PayPal payment only</option>
+                    <option value="U">UnionPay payment only</option>
+                    <option value="W">Wechat payment only</option>
+                    <option value="1">APM (Alternative Payment Method) payment only</option>
+                    <option value="Q">QR Gateway Payments ONLY</option>
+
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+    <a asp-action="index" asp-controller="home">Back</a>
+</form>
