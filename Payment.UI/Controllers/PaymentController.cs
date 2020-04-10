@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
@@ -8,13 +9,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Payment.UI.Models;
+
 
 namespace Payment.UI.Controllers
 {
     public class PaymentController : Controller
     {
         private static readonly Encoding encoding = Encoding.UTF8;
+
+        public IConfiguration Configuration { get; }
         public IActionResult Generate()
         {
             Generate model = new Generate();
@@ -25,8 +32,36 @@ namespace Payment.UI.Controllers
             return View("Generate", model);
         }
 
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        //private async Task<PaymentResource> GetPayment(string InvoiceNo)
+        //{
+        //    PaymentResource result = null;
+        //    string baseUrl = Configuration["api:payment"];
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(baseUrl);
+        //        client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //        var response = await client.GetAsync(string.Format("v1/Payment?InvoiceNo={0}", InvoiceNo));
+        //        if (response.IsSuccessStatusCode && response.StatusCode == System.Net.HttpStatusCode.OK)
+        //        {
+        //            List<PaymentResource> collection = JsonConvert.DeserializeObject<List<PaymentResource>>(response.Content.ReadAsStringAsync().Result);
+        //            if (collection.IsNullOrEmpty()) collection = new List<PaymentResource>();
+        //            if (!collection.IsNullOrEmpty())
+        //            {
+        //                if (collection.Count > 0)
+        //                {
+        //                    if (collection.Where(m => m.BrokerCode.Equals(InvoiceNo, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
+        //                    {
+        //                        result = collection.Where(m => m.BrokerCode.Equals(InvoiceNo, StringComparison.InvariantCultureIgnoreCase)).First() as PaymentResource;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return result;
+        //}
+
 
         public IActionResult PaymentResult(IFormCollection form)
         {
